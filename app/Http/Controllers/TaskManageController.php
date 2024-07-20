@@ -11,12 +11,6 @@ class TaskManageController extends Controller
     // 一覧画面の表示
     public function index(Request $request) 
     {
-        // $data = $request->only(['name', 'nickname']);
-        // $data = $request->all(['name', 'nickname']);
-        // $data = $request->all();
-        // dump($data);
-        // $name = $request->input('name', 'デフォルト値');
-        // return view('tasks/hello', ['name' => $name]);
         $tasks = Task::get();
         return view('tasks.index', compact('tasks'));
     }
@@ -27,10 +21,6 @@ class TaskManageController extends Controller
 
         return view('tasks.create');
     }
-    // public function create($title, $description = 'メモ')
-    // {
-    //     return $title. '---' .$description;
-    // }
 
     // 新規登録処理
     public function store(Request $request) 
@@ -64,7 +54,15 @@ class TaskManageController extends Controller
     // 更新処理
     public function update(Request $request, Task $task)
     {
-        // 
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:50'],
+            'description' => ['string', 'max:1000']
+        ]);
+
+        $task->update($data);
+
+        return to_route('tasks.show', $task);
+
     }
     
     // 削除処理
