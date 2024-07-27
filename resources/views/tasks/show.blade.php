@@ -12,9 +12,14 @@
     <div class="container mt-4 d-flex justify-content-center">
       <div>
         <div class="d-flex justify-content-end">
-          <a class="btn btn-primary" href="{{ route("tasks.edit", $task) }}">編集へ</a>
+          <a class="btn btn-outline-dark me-2" href="{{ route("tasks.edit", $task) }}">
+            <i class="bi bi-pencil"></i>
+          </a>
           <form method="post" action="{{ route("tasks.destroy", $task) }}">
-            @csrf @method("delete") <input class="btn btn-light" type="submit" value="削除">
+            @csrf @method("delete")
+            <button class="btn btn-outline-dark" type="submit">
+              <i class="bi bi-trash"></i>
+            </button>
           </form>
         </div>
         {{-- タイトル --}}

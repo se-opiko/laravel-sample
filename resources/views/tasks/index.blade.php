@@ -7,9 +7,9 @@
 
   <body>
     <div class="container mt-4">
-      <div class="d-flex justify-content-between">
-        <a class="btn btn-primary" href="{{ route("tasks.create") }}" role="button">新規作成</a>
-        <div class="d-flex">
+      <div class="d-flex justify-content-end">
+        <a class="btn btn-primary" href="{{ route("tasks.create") }}" role="button"><i class="bi bi-plus-lg"></i></a>
+        <div class="d-flex ps-2">
           <input type="text" class="form-control" aria-describedby="button-addon2">
           <button class="btn btn-primary" type="button" id="button-addon2">search
           </button>
