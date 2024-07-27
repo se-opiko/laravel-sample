@@ -15,10 +15,16 @@
         <div class="form-floating mb-3">
           <input type="text" class="form-control" name="title" id="floatingInputTitle">
           <label for="floatingInputTitle">タイトル</label>
+          @error("title")
+            <strong class="text-danger">{{ $message }}</strong>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <textarea type="text" class="form-control" name="description" id="floatingTextareaMemo"></textarea>
           <label for="floatingTextareaMemo">メモ</label>
+          @error("description")
+            <strong class="text-danger">{{ $message }}</strong>
+          @enderror
         </div>
         <div class="d-flex justify-content-end">
           <input class="btn btn-primary" type="submit" value="登録">

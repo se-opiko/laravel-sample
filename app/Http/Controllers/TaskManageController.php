@@ -25,10 +25,9 @@ class TaskManageController extends Controller
     // 新規登録処理
     public function store(Request $request) 
     {
-        // TODO:validateについて調べる
         $data = $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description' => ['string', 'max:1000']
+            'description' => ['nullable','string', 'max:1000']
         ]);
 
         Task::create($data);

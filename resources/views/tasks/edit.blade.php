@@ -14,10 +14,16 @@
           <input type="text" class="form-control" name="title" value="{{ data_get($task, "title") }}"
             id="floatingInputTitle">
           <label for="floatingInputTitle">タイトル</label>
+          @error("title")
+            <strong class="text-danger">{{ $message }}</strong>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <textarea type="text" class="form-control" name="description" id="floatingTextareaMemo">{{ data_get($task, "description") }}</textarea>
           <label for="floatingTextareaMemo">メモ</label>
+          @error("description")
+            <strong class="text-danger">{{ $message }}</strong>
+          @enderror
         </div>
         <div class="d-flex justify-content-between">
           <input class="btn btn-outline-dark" type="submit" value="キャンセル">
