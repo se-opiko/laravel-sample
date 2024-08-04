@@ -11,8 +11,15 @@ class TaskManageController extends Controller
     // 一覧画面の表示
     public function index(Request $request) 
     {
-        $tasks = Task::get();
-        return view('tasks.index', compact('tasks'));
+        $search = $request->input('search');
+        if(filled($search)) {
+            $tasks = Task::where('title', 'like', "%{$search}%")
+             ->orWhere('description', 'like', "%{$search}%")
+             ->get();
+        } else {
+            $tasks = Task::get();
+        }
+        return view('tasks.index', compact('tasks', 'search'));
     }
 
     // 新規登録画面の表示

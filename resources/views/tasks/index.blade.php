@@ -8,12 +8,15 @@
   <body>
     <div class="container mt-4">
       <div class="d-flex justify-content-end">
-        <a class="btn btn-primary" href="{{ route("tasks.create") }}" role="button"><i class="bi bi-plus-lg"></i></a>
-        <div class="d-flex ps-2">
-          <input type="text" class="form-control" aria-describedby="button-addon2">
-          <button class="btn btn-primary" type="button" id="button-addon2">search
-          </button>
-        </div>
+        <a class="btn btn-outline-dark" href="{{ route("tasks.create") }}" role="button"><i class="bi bi-plus-lg"></i></a>
+        <form method="get" action="{{ route("tasks.index") }}">
+          <div class="d-flex ps-2">
+            <input type="text" class="form-control" aria-describedby="button-addon2" name="search"
+              value="{{ $search }}">
+            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
       </div>
 
       <table class="table table-hover">
