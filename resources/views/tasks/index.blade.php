@@ -6,6 +6,9 @@
   </head>
 
   <body>
+    @php
+      use App\Helpers\Label;
+    @endphp
     <div class="container mt-4">
       <div class="d-flex justify-content-end">
         <a class="btn btn-outline-dark" href="{{ route("tasks.create") }}" role="button"><i class="bi bi-plus-lg"></i></a>
@@ -39,7 +42,7 @@
                 {{ $task->description }}
               </td>
               <td>
-                {{ $task->status }}
+                {{ Label::getStatusLabel($task->status) }}
               </td>
             </tr>
           @endforeach

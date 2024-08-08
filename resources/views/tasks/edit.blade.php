@@ -25,6 +25,16 @@
             <strong class="text-danger">{{ $message }}</strong>
           @enderror
         </div>
+        <div class="form-floating mb-3">
+          <select type="text" class="form-control" name="status" id="floatingSelectStatus">
+            <option value="0" @if ($task->status == 0) selected @endif>対応中</option>
+            <option value="1" @if ($task->status == 1) selected @endif>対応完了</option>
+          </select>
+          <label for="floatingTextareaMemo">ステータス</label>
+          @error("status")
+            <strong class="text-danger">{{ $message }}</strong>
+          @enderror
+        </div>
         <div class="d-flex justify-content-between">
           <input class="btn btn-outline-dark" type="submit" value="キャンセル">
           <input class="btn btn-primary" type="submit" value="保存">

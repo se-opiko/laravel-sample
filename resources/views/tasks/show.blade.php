@@ -6,6 +6,9 @@
   </head>
 
   <body>
+    @php
+      use App\Helpers\Label;
+    @endphp
     <div class="mt-3 ms-4">
       <a class="btn btn-outline-dark" href="{{ route("tasks.index") }}" role="button">一覧へ戻る</a>
     </div>
@@ -32,6 +35,13 @@
         <div class="form-floating mb-3">
           <textarea readonly class="form-control-plaintext" type="text" name="description" id="floatingTextareaMemo">{{ $task->description }}</textarea>
           <label for="floatingTextareaMemo">メモ</label>
+        </div>
+        {{-- ステータス --}}
+        <div class="form-floating mb-3">
+          <input readonly type="text" class="form-control-plaintext" name="status" id="floatingSelectStatus"
+            value="{{ Label::getStatusLabel($task->status) }}">
+          </input>
+          <label for="floatingSelectStatus">ステータス</label>
         </div>
       </div>
     </div>

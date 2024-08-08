@@ -15,6 +15,7 @@ class TaskManageController extends Controller
         if(filled($search)) {
             $tasks = Task::where('title', 'like', "%{$search}%")
              ->orWhere('description', 'like', "%{$search}%")
+             ->orWhere('status', 'like', "%{$search}%")
              ->get();
         } else {
             $tasks = Task::get();
@@ -34,11 +35,11 @@ class TaskManageController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description' => ['nullable','string', 'max:1000']
+            'description' => ['nullable','string', 'max:1000'],
+            'status' => ['required', 'integer']
         ]);
 
         Task::create($data);
-        // tasks()->create($data);
         return to_route('tasks.index');
     }
 
@@ -52,8 +53,6 @@ class TaskManageController extends Controller
     // 編集画面の表示
     public function edit(Task $task)
     {
-        // $data = old() ?: $task;
-
         return view('tasks.edit', compact('task'));
     }
 
@@ -62,7 +61,8 @@ class TaskManageController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:50'],
-            'description' => ['string', 'max:1000']
+            'description' => ['string', 'max:1000'],
+            'status' => ['required', 'integer']
         ]);
 
         $task->update($data);
